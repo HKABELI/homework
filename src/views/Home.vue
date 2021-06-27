@@ -14,10 +14,10 @@
     </div>
   </div>
     <div class="buttons">
-      <div class="but" id="On" @click="Play">
+      <div class="but" id="On" @click="PlayAll">
         <img src="../assets/play.svg" alt="" />
       </div>
-      <div class="but" id="Off" @click="Pause">
+      <div class="but" id="Off" @click="PauseAll">
         <img src="../assets/pause.svg" alt="" />
       </div>
     </div>
@@ -26,7 +26,7 @@
 
 <script>
 import Block from "@/components/Block.vue";
-
+//mp3 files
 import song1 from "../assets/1.mp3";
 import song2 from "../assets/2.mp3";
 import song3 from "../assets/3.mp3";
@@ -36,6 +36,8 @@ import song6 from "../assets/6.mp3";
 import song7 from "../assets/7.mp3";
 import song8 from "../assets/8.mp3";
 import song9 from "../assets/9.mp3";
+
+//icons
 import p1 from "../assets/icons/1.svg";
 import p2 from "../assets/icons/2.svg";
 import p3 from "../assets/icons/3.svg";
@@ -52,8 +54,9 @@ export default {
   //data of a component is it's attrivutes (the data it owns)
   data() {
     return {
+      //array of song pads
       songs: [
-        { name: "Durm", file: new Audio(song1), playing: false, photo: p1 },
+        { name: "1", file: new Audio(song1), playing: false, photo: p1 },
         { name: "2", file: new Audio(song2), playing: false, photo: p2 },
         { name: "3", file: new Audio(song3), playing: false, photo: p3 },
         { name: "4", file: new Audio(song4), playing: false, photo: p4 },
@@ -77,15 +80,16 @@ export default {
       this.songs[index].playing = !state;
       if (!state) {
         this.songs[index].file.play();
+        this.songs[index].file.loop=true;
       } else this.songs[index].file.pause();
     },
-    Play() {
+    PlayAll() {
       this.songs.forEach((song) => {
         song.playing = true;
         song.file.play();
       });
     },
-    Pause() {
+    PauseAll() {
       this.songs.forEach((song) => {
         song.playing = false;
         song.file.pause();

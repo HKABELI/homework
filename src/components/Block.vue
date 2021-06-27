@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
     <div class="block" :class="{play:playing , pause:!playing}">
-            <img class="imgg" :src='photo' alt="">
+            <img class="icon" :src='photo' alt="">
     </div>
 </template>
 
@@ -14,18 +14,13 @@
             file: Object,
             playing: Boolean,
             photo: String,
-        },
-        components: {
-            
-        },
-    
+        }, 
     }
 </script>
 
 <style scoped>
 
 .block {
-   
     margin: 10px;
     border-radius: 10px;
     padding: 50px;
@@ -39,18 +34,13 @@
     opacity: 0.8;
     cursor: pointer;
 }
-    
-
-
 .play{
     background-color: rgb(111, 226, 111)
 }
-
 .pause{
     background-color: rgb(226, 111, 111)
 }
-
-.imgg{
+.icon{
     height: 50px;
     width: 50px;
 }
